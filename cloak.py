@@ -115,7 +115,7 @@ def injector(script):
         f.close() # closes the file
     payload = ''.join(payload) # converts payload list into a string
     payload = payload.split("'") # converts the payload into a list by splitting it from the character '
-    base64_string = payload[3] # retireves the third *coughs* the fourth element from the payload list
+    base64_string = payload[3] # retrieves the third *coughs* the fourth element from the payload list
     print '%s Injecting into %s%s%s' % (run, green, script, end)
     injectable_lines = [] # Lines where payload pieces can be inserted safely
     imports = [] # lines that are being used to import libraries. Perfect for inserting 'import base64, sys'
