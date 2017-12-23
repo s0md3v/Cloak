@@ -33,8 +33,8 @@ s.close()
 
 
 def check_external_dependency(command, help=None):
-    check_msfvenom = os.system('command -v %s > /dev/null' % command)
-    if check_msfvenom != 0:
+    check_command = os.system('command -v %s > /dev/null' % command)
+    if check_command != 0:
         print '%s%s Couldn\'t find %s!' % (bad, red, command)
         if help:
             print '%s %s' % (info, help)
