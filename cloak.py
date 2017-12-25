@@ -82,7 +82,6 @@ def github(script):
         for line in f:
             if '.py' in line: # if a file contains .py
                 python_files.append(line.strip('\n')) # adding the filename to python_files list
-    print len(python_files)
     if len(python_files) == 0: # if there are 0 python files
         print '%s No python file found.' % bad
         yes_no = raw_input('%s Would you like to manually select a file? [Y/n] ' % info).lower()
