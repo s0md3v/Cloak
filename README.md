@@ -1,6 +1,6 @@
 # Cloak
 <img src='https://i.imgur.com/m3scSAO.png' />
-Cloak is an intelligent python backdoor framework.
+Cloak is an intelligent python backdoor framework*.
 
 ## What it exactly does?
 <b>Cloak</b> generates a python payload via <b>msfvenom</b> and then intelligently injects it into the python script you specify.
@@ -9,11 +9,12 @@ To evade basic detection, Cloak breaks the payload into several parts and places
 Cloak will be further upgraded in future to support a wide range of payloads, platforms and evasion techniques.
 
 ### Demo
-<img src='https://i.imgur.com/mEzDJp2.png' />
+<img src='https://i.imgur.com/KJ9hTHo.png' />
 
-### Requirements
+### Compatibility
+Cloak works best on Linux and is compatible with both python2 and python3.
+Dependencies:
 - msfvenom
-- python2
 
 ### Contribute
 For now, <b>Cloak</b> can backdoor python scripts but I am looking forward to do the same for <b>C</b>, <b>bash</b> and <b>perl</b> scripts.
